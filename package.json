@@ -31,7 +31,7 @@
         "start": "react-scripts start",
         "server": "nodemon ./Backend/main.js",
         "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run server\"",
-        "build": "npm run build",
+        "build": "react-scripts build",
         "test": "react-scripts test"
     },
     "author": "",
