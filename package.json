@@ -28,9 +28,9 @@
     "react-scripts": "^3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run server\"",
+    "start": "node server.js",
+    "client": "react-scripts start",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run start\"",
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
