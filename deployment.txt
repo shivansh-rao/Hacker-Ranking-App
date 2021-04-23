@@ -1,0 +1,7 @@
+Deployed on heroku
+URL is-(https://hacker-ranking-app.herokuapp.com/)
+
+admin login (/admin-panel)
+    username=Shivansh
+    password=123456
+
