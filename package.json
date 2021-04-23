@@ -2,7 +2,6 @@
   "name": "hacker-ranking",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
@@ -30,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "nodemon ./Backend/main.js",
+    "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test"
