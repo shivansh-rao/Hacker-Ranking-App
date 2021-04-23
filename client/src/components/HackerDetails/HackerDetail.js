@@ -3,8 +3,8 @@ import axios from 'axios'
 import { Redirect, useParams } from 'react-router-dom'
 import Nav from '../Navbar/Nav'
 
-function HackerDetail() {
-	
+export default function HackerDetail() {
+	const { hackerId } = useParams()
 	let [hackerData, setHackerData] = useState(false)
 	let [userLogIn, setUserLogIn] = useState(localStorage.getItem('loggedIn'))
 	let [username, setUserName] = useState(localStorage.getItem('userName'))
@@ -17,7 +17,7 @@ function HackerDetail() {
 
     /*Function to make api call to load single hacker's data using user id*/
 	const MakeNetworkCall = () => {
-		const { hackerId } = useParams()
+		
 		let token = localStorage.getItem('token')
 		axios.get(`http://localhost:3001/hacker/${hackerId}`, {
 			headers: {
@@ -82,4 +82,3 @@ function HackerDetail() {
 		)
 }
 
-export default HackerDetail
