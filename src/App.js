@@ -19,8 +19,9 @@ const App = () => {
 
       <Router>
         <div className="App">
-          <Route path="/" exact component={Home} />
+
           <Switch>
+            <Route path="/" exact component={Home} />
             <Route path="/hacker-list" exact component={HackersList} />
             <Route path="/hacker/statistics" exact component={Statistics} />
             <Route path="/hacker/:id" exact component={HackerDetail} />
