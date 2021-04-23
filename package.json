@@ -5,14 +5,16 @@
     "dependencies": {
         "axios": "^0.19.2",
         "body-parser": "^1.19.0",
-        "cookie-parser": "^1.4.5",
         "chart.js": "^2.9.3",
+        "concurrently": "^6.0.2",
+        "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.9.12",
         "node": "^14.2.0",
+        "nodemon": "^2.0.7",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
@@ -28,7 +30,7 @@
     "scripts": {
         "client": "react-scripts start",
         "server": "nodemon ./Backend/main.js",
-        "start":"npm run dev",
+        "start": "npm run dev",
         "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
         "build": "react-scripts build",
         "test": "react-scripts test"
