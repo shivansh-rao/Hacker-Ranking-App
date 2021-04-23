@@ -28,9 +28,8 @@
         "react-scripts": "^3.4.3"
     },
     "scripts": {
-        "client": "react-scripts start",
+        "start": "react-scripts start",
         "server": "nodemon ./Backend/main.js",
-        "start": "npm run client",
         "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
         "build": "react-scripts build",
         "test": "react-scripts test"
@@ -41,11 +40,7 @@
         "extends": "react-app"
     },
     "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
+
         "development": [
             "last 1 chrome version",
             "last 1 firefox version",
