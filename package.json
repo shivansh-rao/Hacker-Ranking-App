@@ -24,6 +24,5 @@
       "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "author": "",
-    "license": "ISC",
-    "proxy": "http://localhost:3001"
+    "license": "ISC"
   }
