@@ -34,6 +34,9 @@ app.post("/hackers/topHackers",customMiddlewares.isLoggedIn, hackerController.to
 app.get("/hackers/recentlyUpdated",customMiddlewares.isLoggedIn, hackerController.recentlyUpdated)
 app.post("/hacker/new", hackerController.addNewHacker);
 
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 
 

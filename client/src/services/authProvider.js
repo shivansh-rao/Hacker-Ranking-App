@@ -1,9 +1,7 @@
-import axios from 'axios'
-
 const authProvider = {
     // authentication
     login: ({ username, password }) => {
-        const request = new Request('http://localhost:3001/login', {
+        const request = new Request('/login', {
             method: 'POST',
             body: JSON.stringify({ username, password,admin:true}),
             headers: new Headers({ 'Content-Type': 'application/json' }),

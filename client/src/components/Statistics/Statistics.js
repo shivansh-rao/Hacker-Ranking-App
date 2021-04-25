@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Redirect, useParams, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Nav from '../Navbar/Nav'
-import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Line, Pie, } from "react-chartjs-2";
 
 
 function Statistics() {
@@ -12,7 +12,7 @@ function Statistics() {
     let [CPPData, setCPPData] = useState(false)
     let [authenticate, setAuthenticate] = useState(true)
     let [deviceData, setDeviceData] = useState(false)
-    let [userLogIn, setUserLogIn] = useState(localStorage.getItem('loggedIn'))
+    let userLogIn = useState(localStorage.getItem('loggedIn'))
 
     /* useEffect hook to fetch data on initial load*/
     useEffect(() => {
@@ -85,7 +85,7 @@ function Statistics() {
     /*Function to make api call to load recentely updated data*/
     const fetchRecentlyUpdatedDetails = () => {
         let token = localStorage.getItem('token')
-        axios.get(`http://localhost:3001/hackers/recentlyUpdated`, {
+        axios.get(`/hackers/recentlyUpdated`, {
             headers: {
                 'authentication': token
             }
@@ -106,7 +106,7 @@ function Statistics() {
     /*Function to make api call to load all hacker's data*/
     const fetchHackerList = () => {
         let token = localStorage.getItem('token')
-        axios.get("http://localhost:3001/hackers",
+        axios.get("/hackers",
             {
                 headers: {
                     'authentication': token
@@ -134,12 +134,11 @@ function Statistics() {
         let body = {
             limit: 10
         }
-        axios.post(`http://localhost:3001/hackers/topHackers`, body, {
+        axios.post(`/hackers/topHackers`, body, {
             headers: {
                 'authentication': token
             }
-        }).
-            then(response => {
+        }).then(response => {
                 if (response.data === "not authenticated") {
                     setAuthenticate(false)
                 }

@@ -2,7 +2,7 @@ import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:3001';
+// const apiUrl = 'http://localhost:3001';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
@@ -10,7 +10,7 @@ export default {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         
-        const url = `${apiUrl}/${resource}`;
+        const url = `/${resource}`;
         let token = localStorage.getItem('token')
         return axios.get(url, {
             headers: {
@@ -41,7 +41,7 @@ export default {
     },
 
     getOne: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
+        httpClient(`/${resource}/${params.id}`).then(({ json }) => ({
             data: json,
         })),
 
@@ -49,7 +49,7 @@ export default {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
 
@@ -64,7 +64,7 @@ export default {
                 [params.target]: params.id,
             }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `/${resource}?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
@@ -73,7 +73,7 @@ export default {
     },
 
     update: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+        httpClient(`/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({ data: json })),
@@ -82,14 +82,14 @@ export default {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
+        return httpClient(`/${resource}?${stringify(query)}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({ data: json }));
     },
 
     create: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}`, {
+        httpClient(`/${resource}`, {
             method: 'POST',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({
@@ -97,7 +97,7 @@ export default {
         })),
 
     delete: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+        httpClient(`/${resource}/${params.id}`, {
             method: 'DELETE',
         }).then(({ json }) => ({ data: json })),
 
@@ -105,7 +105,7 @@ export default {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
+        return httpClient(`/${resource}?${stringify(query)}`, {
             method: 'DELETE',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({ data: json }));

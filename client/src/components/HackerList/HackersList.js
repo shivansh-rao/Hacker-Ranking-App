@@ -23,7 +23,7 @@ function HackersList() {
         let body = {
             limit: 3
         }
-        axios.post("http://localhost:3001/hackers/topHackers", body,
+        axios.post("/hackers/topHackers", body,
             {
                 headers: {
                     'authentication': token
@@ -47,7 +47,7 @@ function HackersList() {
     /*Function to make api call to load all hacker's data*/
     const fetchHackerList = () => {
         let token = localStorage.getItem('token')
-        axios.get("http://localhost:3001/hackers",
+        axios.get("/hackers",
             {
                 headers: {
                     'authentication': token

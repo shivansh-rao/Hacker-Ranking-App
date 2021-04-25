@@ -12,7 +12,7 @@ const Nav = () => {
 
 	const _logout = () => {
 		const history = useHistory()
-		axios.get("http://localhost:3001/logout")
+		axios.get("/logout")
 			.then(response => {
 				console.log(response.data)
 				if (response.status === 200) {

@@ -24,7 +24,7 @@ function Login() {
       password: password
     }
 
-    axios.post("http://localhost:3001/login", userData)
+    axios.post("/login", userData)
       .then(response => {
 
         if (response.data.user === false) {

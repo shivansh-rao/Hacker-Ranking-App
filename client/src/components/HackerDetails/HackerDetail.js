@@ -19,7 +19,7 @@ export default function HackerDetail() {
 	const MakeNetworkCall = () => {
 		
 		let token = localStorage.getItem('token')
-		axios.get(`http://localhost:3001/hacker/${hackerId}`, {
+		axios.get(`/hacker/${hackerId}`, {
 			headers: {
 				'authentication': token
 			}
