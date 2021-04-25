@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
@@ -28,18 +30,18 @@ function Statistics() {
         let cppArr = []
         let usernameArr = []
 
-        userArr.sort(function (a, b) { return b.competitivePercentiles.cpp - a.competitivePercentiles.cpp; });
-        console.log(userArr)
+        userArr.sort(function (a, b) { return b?.competitivePercentiles?.cpp - a?.competitivePercentiles?.cpp; });
+        
 
         userArr.map((singleUser, index) => {
-            if (singleUser.competitivePercentiles.deviceType === "Laptop")
+            if (singleUser?.competitivePercentiles?.deviceType === "Laptop")
                 tempArr[0]++;
-            else if (singleUser.competitivePercentiles.deviceType === "Tablet")
+            else if (singleUser?.competitivePercentiles?.deviceType === "Tablet")
                 tempArr[1]++;
-            else if (singleUser.competitivePercentiles.deviceType === "Mobile")
+            else if (singleUser?.competitivePercentiles?.deviceType === "Mobile")
                 tempArr[2]++;
             usernameArr.push(singleUser.name)
-            cppArr.push(singleUser.competitivePercentiles.cpp)
+            cppArr.push(singleUser?.competitivePercentiles?.cpp)
 
         })
         const state = {
@@ -89,8 +91,7 @@ function Statistics() {
             headers: {
                 'authentication': token
             }
-        }).
-            then(response => {
+        }).then(response => {
                 if (response.data === "not authenticated") {
                     setAuthenticate(false)
                 }
@@ -99,7 +100,7 @@ function Statistics() {
                 }
             })
             .catch(error => {
-                console.log(error)
+                return
             })
     }
 
@@ -124,7 +125,7 @@ function Statistics() {
                 }
             })
             .catch(error => {
-                console.log(error)
+                return
             })
     }
 
@@ -147,8 +148,7 @@ function Statistics() {
                 }
             })
             .catch(error => {
-                console.log(error)
-            })
+                return            })
 
     }
 
@@ -169,7 +169,7 @@ function Statistics() {
                             {top10HackerData && top10HackerData?.map((topHacker, index) =>
                                 <div className="marAuto">
                                     <div className={`whiteBackground pointerCursor marginBottom`}>
-                                        <img className={`userProfileImg  circleImg`} src={topHacker.profileLink} />
+                                        <img className={`userProfileImg  circleImg`} src={topHacker.profileLink} alt=""/>
                                         <div className={`userInfoContainer grow`}>
                                             <a className={`title`} href={`/hacker/${topHacker._id}`}>{topHacker.name}</a>
                                             <div className={`subTitle`}>{topHacker.overallRank}</div>

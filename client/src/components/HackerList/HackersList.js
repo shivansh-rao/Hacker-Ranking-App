@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Nav from '../Navbar/Nav'
@@ -41,7 +42,7 @@ function HackersList() {
                 }
             })
             .catch(error => {
-                console.log(error)
+                return
             })
     }
     /*Function to make api call to load all hacker's data*/
@@ -65,7 +66,7 @@ function HackersList() {
                 }
             })
             .catch(error => {
-                console.log(error)
+                return
             })
     }
 
@@ -83,7 +84,7 @@ function HackersList() {
                             {top3HackerList && top3HackerList?.map((topHacker, index) =>
                                 <div className="marAuto">
                                     <div className={`whiteBackground pointerCursor marginBottom`}>
-                                        <img className={`userProfileImg  circleImg`} src={topHacker.profileLink} />
+                                        <img className={`userProfileImg  circleImg`} src={topHacker.profileLink} alt="" />
                                         <div className={`userInfoContainer grow`}>
                                             <a className={`title`} href={`/hacker/${topHacker._id}`}>{topHacker.name}</a>
                                             <div className={`subTitle`}>{topHacker.overallRank}</div>

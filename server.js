@@ -30,7 +30,7 @@ app.get("/logout", authController.logout);
 
 /*Routes to fetch or add data to Userdashboard Model*/
 app.get("/hackers", customMiddlewares.isLoggedIn, hackerController.hackers);
-app.get("/hacker/:id", customMiddlewares.isLoggedIn, hackerController.hackarDetail);
+app.get("/singleHacker/:id", customMiddlewares.isLoggedIn, hackerController.hackarDetail);
 app.post("/hackers/topHackers",customMiddlewares.isLoggedIn, hackerController.top3hackarDetail)
 app.get("/hackers/recentlyUpdated",customMiddlewares.isLoggedIn, hackerController.recentlyUpdated)
 app.post("/hacker/new", hackerController.addNewHacker);

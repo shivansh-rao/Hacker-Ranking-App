@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+/* eslint-disable no-lone-blocks */
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 
@@ -7,11 +8,11 @@ const Nav = () => {
 
 	let [userLogIn, setUserLogIn] = useState(localStorage.getItem('loggedIn'))
 	let [username, setUserName] = useState(localStorage.getItem('userName'))
-	
+	const history = useHistory()
 
 
 	const _logout = () => {
-		const history = useHistory()
+		
 		axios.get("/logout")
 			.then(response => {
 				console.log(response.data)

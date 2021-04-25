@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import axios from 'axios';

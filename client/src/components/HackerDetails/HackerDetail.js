@@ -1,10 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Redirect, useParams } from 'react-router-dom'
 import Nav from '../Navbar/Nav'
 
 export default function HackerDetail() {
-	const { hackerId } = useParams()
+	const { id } = useParams()
+	console.log(id)
+	let [hackerId, setHackerId] = useState(id)
 	let [hackerData, setHackerData] = useState(false)
 	let [userLogIn, setUserLogIn] = useState(localStorage.getItem('loggedIn'))
 	let [username, setUserName] = useState(localStorage.getItem('userName'))
@@ -15,25 +19,24 @@ export default function HackerDetail() {
 		MakeNetworkCall()
 	}, [])
 
-    /*Function to make api call to load single hacker's data using user id*/
+	/*Function to make api call to load single hacker's data using user id*/
 	const MakeNetworkCall = () => {
-		
+
 		let token = localStorage.getItem('token')
-		axios.get(`/hacker/${hackerId}`, {
+		axios.get(`/singleHacker/${hackerId}`, {
 			headers: {
 				'authentication': token
 			}
-		}).
-			then(response => {
-				if (response.data === "not authenticated") {
-					setAuthenticate(false)
-				}
-				else {
-					setHackerData(response.data)
-				}
-			})
+		}).then(response => {
+			if (response.data === "not authenticated") {
+				setAuthenticate(false)
+			}
+			else {
+				setHackerData(response.data)
+			}
+		})
 			.catch(error => {
-				console.log(error)
+				return
 			})
 
 	}
@@ -66,7 +69,7 @@ export default function HackerDetail() {
 							</div>
 							<div className="">
 								<div className="boxStyle">
-									<img className="boxImgSize pagePadding" src={hackerData.profileLink} />
+									<img className="boxImgSize pagePadding" src={hackerData.profileLink} alt="" />
 									<div className="caption-full">
 										<h4 className="pull-right">
 										</h4>
